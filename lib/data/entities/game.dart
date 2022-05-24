@@ -1,6 +1,8 @@
 import 'package:flutter_motus/data/entities/user.dart';
 import 'package:hive/hive.dart';
 
+part 'game.g.dart';
+
 @HiveType(typeId: 2)
 class Game {
   @HiveField(0)

@@ -19,7 +19,7 @@ class WordRepository {
   // le constructeur
   WordRepository._();
 
-  Future<Word> insertWord(Word word) async{
+  Future<Word> insertWord(Word word) async {
 
     await _wordHive?.insertWord(word);
 

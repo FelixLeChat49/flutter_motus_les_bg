@@ -1,23 +1,23 @@
 import '../dataSources/local/trash_hive.dart';
 import '../entities/trash.dart';
 
-class WordRepository {
+class TrashRepository {
 
-  static WordRepository? _instance;
+  static TrashRepository? _instance;
   static TrashHive? _trashHive;
 
-  static Future<WordRepository> getInstance() async {
+  static Future<TrashRepository> getInstance() async {
 
     if(_instance == null) {
       _trashHive = await TrashHive.getInstance();
-      _instance = WordRepository._();
+      _instance = TrashRepository._();
     }
 
     return _instance!;
   }
 
   // le constructeur
-  WordRepository._();
+  TrashRepository._();
 
   Future<Trash> insertTrash(Trash trash) async{
 

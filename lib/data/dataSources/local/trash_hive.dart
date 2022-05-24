@@ -19,7 +19,7 @@ class TrashHive {
 
   TrashHive._();
 
-  Future<void> insertWord(Trash trash) async {
+  Future<void> insertTrash(Trash trash) async {
     await _box?.add(trash);
     await _box?.close();
     return;

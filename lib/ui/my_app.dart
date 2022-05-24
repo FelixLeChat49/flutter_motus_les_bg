@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_motus/ui/screens/global/main_page.dart';
 import 'package:flutter_motus/ui/screens/login/login.dart';
 
 class MyApp extends StatelessWidget {
@@ -9,10 +10,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'TusMo des BeauGosses',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(title: 'Log toi sur TusMo'),
+      home: const MainPage(),
     );
   }
 }

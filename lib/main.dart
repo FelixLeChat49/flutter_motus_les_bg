@@ -8,21 +8,23 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
-Future<void> main() async {
-  await Hive.initFlutter();
-  Hive..registerAdapter(WordAdapter())
-  ..registerAdapter(GameAdapter())
-  ..registerAdapter(UserAdapter())
-  ..registerAdapter(TrashAdapter());
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (_)=>GameViewModel()),
-    ChangeNotifierProvider(create: (_)=>LoginViewModel()),
-    ChangeNotifierProvider(create: (_)=>ProfileViewModel()),
-    ChangeNotifierProvider(create: (_)=>ScoresViewModelViewModel()),
-  ],
-  child: const MyApp(),)
-  );
-}
+// Future<void> main() async {
+//   await Hive.initFlutter();
+//   Hive..registerAdapter(WordAdapter())
+//   ..registerAdapter(GameAdapter())
+//   ..registerAdapter(UserAdapter())
+//   ..registerAdapter(TrashAdapter());
+//   runApp(MultiProvider(providers: [
+//     // ChangeNotifierProvider(create: (_)=>GameViewModel()),
+//     // ChangeNotifierProvider(create: (_)=>LoginViewModel()),
+//     // ChangeNotifierProvider(create: (_)=>ProfileViewModel()),
+//     // ChangeNotifierProvider(create: (_)=>ScoresViewModelViewModel()),
+//   ],
+//   child: const MyApp(),)
+//   );
+// }
+
+void main() => runApp(const MyApp());
 
 
 

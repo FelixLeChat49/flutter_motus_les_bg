@@ -16,19 +16,22 @@ Future<void> main() async {
   await Firebase.initializeApp();
   await Hive.initFlutter();
   Hive..registerAdapter(WordAdapter())
-  ..registerAdapter(GameAdapter())
-  ..registerAdapter(UserAdapter())
-  ..registerAdapter(TrashAdapter());
+  ..registerAdapter(GameAdapter());
+  //..registerAdapter(UserAdapter())
+  //..registerAdapter(TrashAdapter());
   runApp(MultiProvider(providers: [
 
     ChangeNotifierProvider(create: (_)=>GameViewModel()),
     ChangeNotifierProvider(create: (_)=>LoginViewModel()),
     // ChangeNotifierProvider(create: (_)=>ProfileViewModel()),
     // ChangeNotifierProvider(create: (_)=>ScoresViewModelViewModel()),
+
   ],
   child: const MyApp(),)
   );
 }
+
+
 
 
 

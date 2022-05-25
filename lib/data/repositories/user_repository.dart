@@ -18,6 +18,6 @@ class UserRepository{
 
   Future<User?> signUp({required String email, required String password}) async {
     UserCredential userCredential = await _userFirestore.signUp(email: email, password: password);
-    return userCredential.user;
+    return userCredential?.user;
   }
 }

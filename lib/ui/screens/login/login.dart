@@ -13,7 +13,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   TextEditingController loginController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -21,30 +20,32 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF0E7CFF),
-      body: Consumer<LoginViewModel> (
+      body: Consumer<LoginViewModel>(
         builder: ((context, viewModel, child) {
-          viewModel.addListener((){
-            if(viewModel.user != null){
+          viewModel.addListener(() {
+            if (viewModel.user != null) {
               context.beamToNamed("/home");
             }
           });
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
-
             children: <Widget>[
               Container(
-                margin: const EdgeInsets.only(left:20, right: 20),
+                margin: const EdgeInsets.only(left: 20, right: 20),
                 width: MediaQuery.of(context).size.width - 100,
-                height: MediaQuery.of(context).size.width/10,
+                height: MediaQuery.of(context).size.width / 10,
                 child: const Card(
                   color: Colors.deepOrange,
                   elevation: 5,
-                  child: Text('Mot de passe incorrect', textAlign: TextAlign.center,),
+                  child: Text(
+                    'Mot de passe incorrect',
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
-
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Column(
                   children: [
                     TextField(
@@ -70,20 +71,18 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     ElevatedButton(
                         onPressed: () {
-                          viewModel.signIn(email: loginController.value.text, password: passwordController.value.text);
-
-                      },
+                          viewModel.signIn(
+                              email: loginController.value.text,
+                              password: passwordController.value.text);
+                        },
                         child: const Text('Se connecter')),
                   ],
                 ),
               ),
-
             ],
           );
         }),
       ),
-
-
     );
   }
 }

@@ -23,6 +23,8 @@ class UserFirestore {
     UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
     return userCredential;
   }
+
+  // Fonction is connected
 }
 
 

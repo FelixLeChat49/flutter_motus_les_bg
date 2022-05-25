@@ -20,7 +20,24 @@ class WordHive {
 
   Future<void> insertWord(Word word) async {
     await _box?.add(word);
-    await _box?.close();
+    // await _box?.close();
     return;
+  }
+
+  Future<void> populateWithWord(List<String> strings) async {
+    // Faire un map sur String pour transformer en word
+    List<Word> words = strings.map((str){
+      return Word(null,str,null);
+    }).toList();
+    await _box?.addAll(words);
+    return;
+  }
+
+  List<Word>? getAllWords()  {
+    return _box?.toMap().values.toList();
+  }
+
+  bool isEmpty(){
+    return _box!.isEmpty;
   }
 }

@@ -1,5 +1,4 @@
-import 'dart:math';
-
+import 'package:diacritic/diacritic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_motus/data/entities/word.dart';
@@ -14,22 +13,26 @@ class GameViewModel with ChangeNotifier {
 
   List<String> get list => _list;
 
-  late String _randomWord;
+  late Word _randomWord;
 
-  String get randomWord => _randomWord;
+  Word get randomWord => _randomWord;
 
   Future<String> getRandomWord() async {
-    loadDictionnary();
-    int randomIndex = Random().nextInt(list.length);
-    _randomWord = list.where((word) => word.length>5).elementAt(randomIndex);
-    // notifyListeners();
-    return _randomWord;
+    WordRepository wordRepository = await WordRepository.getInstance();
+    if (wordRepository.checkBoxisEmpty()) {
+      await loadDictionnary();
+    }
+    _randomWord = wordRepository.getRandomWord()!;
+    // Ajouter dans la trash !
+    String textwithoutAccent = removeDiacritics(_randomWord.text);
+    return textwithoutAccent.toUpperCase();
   }
 
-  Future<void> loadDictionnary() async{
+  Future<void> loadDictionnary() async {
+    WordRepository wordRepository = await WordRepository.getInstance();
     String dico = await rootBundle.loadString('assets/files/dico.txt');
     _list = dico.split("\r\n").where((word) => word.length > 5).toList();
-    // return list;
+    wordRepository.populateDatabase(_list);
     notifyListeners();
   }
 }

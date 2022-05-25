@@ -20,4 +20,6 @@ class UserRepository{
     UserCredential userCredential = await _userFirestore.signUp(email: email, password: password);
     return userCredential.user;
   }
+
+  // Fonction isConnected
 }

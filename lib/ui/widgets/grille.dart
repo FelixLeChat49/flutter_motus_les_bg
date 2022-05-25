@@ -10,6 +10,14 @@ class GrilleWidget extends StatefulWidget {
 class _GrilleWidgetState extends State<GrilleWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      height: 350,
+      width: MediaQuery.of(context).size.width,
+      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+      decoration: BoxDecoration(
+        border: Border.all(color: const Color(0xFF0E7CFF), width: 2),
+        borderRadius:const  BorderRadius.all(Radius.circular(15)),
+      ),
+    );
   }
 }

@@ -18,6 +18,7 @@ class InputCase extends StatelessWidget {
       width: size,
       child: const TextField(
         maxLength: 1,
+        textAlign: TextAlign.center,
         style: TextStyle(
           color: Colors.blue
         ),

@@ -22,7 +22,7 @@ class _GrilleWidgetState extends State<GrilleWidget> {
       ),
       child: Column(
         children: [
-          for(int i=0; i<5; i++) if(i == 0) LigneWidget(word: 'azerer')
+          for(int i=0; i<5; i++) LigneWidget(word: 'bonjour')
         ],
       ),
     );

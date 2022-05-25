@@ -18,10 +18,12 @@ class GameViewModel with ChangeNotifier {
 
   String get randomWord => _randomWord;
 
-  Future<void> getRandomWord() async {
+  Future<String> getRandomWord() async {
     loadDictionnary();
     int randomIndex = Random().nextInt(list.length);
     _randomWord = list.where((word) => word.length>5).elementAt(randomIndex);
+    // notifyListeners();
+    return _randomWord;
   }
 
   Future<void> loadDictionnary() async{

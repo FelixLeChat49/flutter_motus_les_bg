@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_motus/data/entities/game.dart';
 import 'package:flutter_motus/data/entities/trash.dart';
@@ -10,6 +11,8 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await Hive.initFlutter();
   Hive..registerAdapter(WordAdapter())
   ..registerAdapter(GameAdapter())

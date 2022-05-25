@@ -11,8 +11,7 @@ class GamePage extends StatelessWidget {
     return Container(
       child: FutureBuilder(
         builder: (context, snapshot) {
-            print(snapshot);
-          if (snapshot.hasData) {
+          if (snapshot.connectionState == ConnectionState.done) {
             return Center(
               child: Text(snapshot.data as String),
             );

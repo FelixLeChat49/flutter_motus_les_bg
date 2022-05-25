@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 part 'user.g.dart';
 
 @HiveType(typeId: 3)
-class User {
+class Player {
   @HiveField(0)
   String? pseudo;
 
@@ -16,5 +16,5 @@ class User {
   @HiveField(3)
   double? score;
 
-  User({required this.pseudo, required this.email, required this.password});
+  Player({required this.pseudo, required this.email, required this.password});
 }

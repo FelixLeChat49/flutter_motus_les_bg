@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_motus/ui/screens/login/login_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key, required this.title}) : super(key: key);
@@ -10,44 +12,78 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+  TextEditingController loginController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+      backgroundColor: Color(0xFF0E7CFF),
+      body: Consumer<SignInAndSignUpViewModel> (
+        builder: ((context, viewModel, child) {
+          viewModel.addListener((){});
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(left:20, right: 20),
+                width: MediaQuery.of(context).size.width - 100,
+                height: MediaQuery.of(context).size.width/10,
+                child: const Card(
+                  color: Colors.deepOrange,
+                  elevation: 5,
+                  child: Text('Mot de passe incorrect', textAlign: TextAlign.center,),
+                ),
+              ),
+
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: Column(
+                  children: [
+                    TextField(
+                      obscureText: false,
+                      controller: loginController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        fillColor: Colors.white,
+                        filled: true,
+                        labelText: 'Login',
+                      ),
+                    ),
+                    TextField(
+                      obscureText: true,
+                      controller: passwordController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        fillColor: Colors.white,
+                        filled: true,
+                        labelText: 'Password',
+                      ),
+                    ),
+                    IconButton(
+                        onPressed: null,
+                        icon: Icon(Icons.chevron_right)
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          viewModel.signIn(email: loginController.value.text, password: passwordController.value.text);
+
+                      },
+                        child:
+                    Text('Se coonnecter')),
+                  ],
+                ),
+              ),
+
+            ],
+          );
+        }),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+
+
     );
   }
 }

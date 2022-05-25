@@ -3,7 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 // Utilisation du model Singleton
 class UserHive {
   static UserHive? _instance;
-  static Box<User>? _box;
+  static Box<Player>? _box;
 
   static Future<UserHive> getInstance() async {
     if(_instance == null){
@@ -15,7 +15,7 @@ class UserHive {
 
   UserHive._();
 
-  Future<void> insertUser(User user) async {
+  Future<void> insertUser(Player user) async {
     await _box?.add(user);
     // await _box?.close();
     return;

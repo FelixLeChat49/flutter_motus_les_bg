@@ -35,8 +35,9 @@ class _MainPageState extends State<MainPage> {
       body: _widgets[_index],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _changePage,
-        selectedItemColor: Colors.red,
+        selectedItemColor: const Color(0xFF0E7CFF),
         currentIndex: _index,
+        showUnselectedLabels: false,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.sports_esports),label: 'Jeu'),
           BottomNavigationBarItem(icon: Icon(Icons.golf_course_sharp),label: 'Score'),

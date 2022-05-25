@@ -1,3 +1,4 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_motus/ui/screens/login/login_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -19,16 +20,20 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF0E7CFF),
+      backgroundColor: const Color(0xFF0E7CFF),
       body: Consumer<LoginViewModel> (
         builder: ((context, viewModel, child) {
-          viewModel.addListener((){});
+          viewModel.addListener((){
+            if(viewModel.user != null){
+              context.beamToNamed("/home");
+            }
+          });
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
 
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(left:20, right: 20),
+                margin: const EdgeInsets.only(left:20, right: 20),
                 width: MediaQuery.of(context).size.width - 100,
                 height: MediaQuery.of(context).size.width/10,
                 child: const Card(
@@ -39,14 +44,14 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Column(
                   children: [
                     TextField(
                       obscureText: false,
                       controller: loginController,
                       keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         fillColor: Colors.white,
                         filled: true,
@@ -56,24 +61,19 @@ class _LoginPageState extends State<LoginPage> {
                     TextField(
                       obscureText: true,
                       controller: passwordController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         fillColor: Colors.white,
                         filled: true,
                         labelText: 'Password',
                       ),
                     ),
-                    IconButton(
-                        onPressed: null,
-                        icon: Icon(Icons.chevron_right)
-                    ),
                     ElevatedButton(
                         onPressed: () {
                           viewModel.signIn(email: loginController.value.text, password: passwordController.value.text);
 
                       },
-                        child:
-                    Text('Se coonnecter')),
+                        child: const Text('Se connecter')),
                   ],
                 ),
               ),

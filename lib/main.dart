@@ -26,7 +26,7 @@ Future<void> main() async {
     // ChangeNotifierProvider(create: (_)=>ProfileViewModel()),
     // ChangeNotifierProvider(create: (_)=>ScoresViewModelViewModel()),
   ],
-  child: const MyApp(),)
+  child: MyApp(),)
   );
 }
 

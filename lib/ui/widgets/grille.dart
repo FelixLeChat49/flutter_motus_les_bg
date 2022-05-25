@@ -13,7 +13,7 @@ class _GrilleWidgetState extends State<GrilleWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 350,
+      height: 500,
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       decoration: BoxDecoration(
@@ -22,7 +22,7 @@ class _GrilleWidgetState extends State<GrilleWidget> {
       ),
       child: Column(
         children: [
-          for(int i=0; i<5; i++) if(i == 0) LigneWidget(word: 'bonjour')
+          for(int i=0; i<5; i++) if(i == 0) LigneWidget(word: 'azerer')
         ],
       ),
     );

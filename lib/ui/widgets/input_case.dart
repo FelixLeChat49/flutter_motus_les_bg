@@ -16,11 +16,21 @@ class InputCase extends StatelessWidget {
     return SizedBox(
       // A mettre dans la column
       width: size,
-      child: const TextField(
+      child: TextField(
         maxLength: 1,
+        onChanged: (text){
+          if(text.length == 1){
+            FocusScope.of(context).nextFocus();
+          }
+        },
         textAlign: TextAlign.center,
-        style: TextStyle(
-          color: Colors.blue
+        style: const TextStyle(
+          color: Colors.blue,
+          fontSize: 25
+        ),
+        decoration: const InputDecoration(
+          counterText: "",
+          border: OutlineInputBorder(borderSide: BorderSide(width: 2)),
         ),
       ),
     );

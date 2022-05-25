@@ -6,17 +6,17 @@ part of 'user.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserAdapter extends TypeAdapter<User> {
+class UserAdapter extends TypeAdapter<Player> {
   @override
   final int typeId = 3;
 
   @override
-  User read(BinaryReader reader) {
+  Player read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return User(
+    return Player(
       pseudo: fields[0] as String?,
       email: fields[1] as String?,
       password: fields[2] as String?,
@@ -24,7 +24,7 @@ class UserAdapter extends TypeAdapter<User> {
   }
 
   @override
-  void write(BinaryWriter writer, User obj) {
+  void write(BinaryWriter writer, Player obj) {
     writer
       ..writeByte(4)
       ..writeByte(0)

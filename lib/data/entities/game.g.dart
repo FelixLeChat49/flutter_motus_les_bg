@@ -18,7 +18,7 @@ class GameAdapter extends TypeAdapter<Game> {
     };
     return Game(
       startDate: fields[0] as DateTime?,
-      player: fields[2] as User?,
+      player: fields[2] as Player?,
     )
       ..endDate = fields[1] as DateTime?
       ..score = fields[3] as double?

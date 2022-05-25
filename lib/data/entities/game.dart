@@ -12,7 +12,7 @@ class Game {
   DateTime? endDate;
 
   @HiveField(2)
-  User? player;
+  Player? player;
 
   @HiveField(3)
   double? score;

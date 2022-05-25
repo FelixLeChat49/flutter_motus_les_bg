@@ -8,8 +8,8 @@ class MyApp extends StatelessWidget {
 
   final BeamerDelegate routerDelegate = BeamerDelegate(
       locationBuilder: RoutesLocationBuilder(routes: {
-    '/': (context, state, data) => LoginPage(title: "LoginPage"),
-    '/home': (context, state, data) => MainPage()
+    '/': (context, state, data) => const LoginPage(title: "LoginPage"),
+    '/home': (context, state, data) => const MainPage()
   }));
 
   // This widget is the root of your application.

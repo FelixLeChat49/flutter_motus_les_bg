@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_motus/data/repositories/user_repository.dart';
 
-import '../../../data/entities/user.dart';
+import '../../../data/entities/player.dart';
 
-class SignInAndSignUpViewModel with ChangeNotifier {
+class LoginViewModel with ChangeNotifier {
   User? _user;
   User? get user => _user;
 

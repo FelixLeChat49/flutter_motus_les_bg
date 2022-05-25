@@ -1,4 +1,4 @@
-import 'package:flutter_motus/data/entities/user.dart';
+import 'package:flutter_motus/data/entities/player.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 // Utilisation du model Singleton
 class UserHive {

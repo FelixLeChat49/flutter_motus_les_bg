@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-part 'user.g.dart';
+part 'player.g.dart';
 
 @HiveType(typeId: 3)
 class Player {

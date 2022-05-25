@@ -1,35 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1654f74-fbce-47c1-8a50-4fe1c34b9b10" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/main_dart.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/dataSources/firestore/user_firestore.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/dataSources/firestore/user_firestore.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/data/dataSources/local/user_hive.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/dataSources/local/user_hive.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/data/entities/game.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/entities/game.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/entities/game.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/entities/game.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/entities/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/entities/user.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/entities/user.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/entities/user.g.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/entities/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/entities/player.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/entities/user.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/entities/player.g.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/data/repositories/user_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repositories/user_repository.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/screens/login/formulaire.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/screens/login/formulaire.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui/my_app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/my_app.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/ui/screens/login/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/screens/login/login.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/ui/screens/login/login_viewmodel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/screens/login/login_viewmodel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

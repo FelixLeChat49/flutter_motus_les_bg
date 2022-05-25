@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF0E7CFF),
-      body: Consumer<SignInAndSignUpViewModel> (
+      body: Consumer<LoginViewModel> (
         builder: ((context, viewModel, child) {
           viewModel.addListener((){});
           return Column(

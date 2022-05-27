@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'ligne.dart';
 
 class GrilleWidget extends StatefulWidget {
-  const GrilleWidget({Key? key}) : super(key: key);
+  const GrilleWidget({Key? key, required this.word}) : super(key: key);
+
+  final String word;
 
   @override
   State<GrilleWidget> createState() => _GrilleWidgetState();
@@ -12,6 +14,7 @@ class GrilleWidget extends StatefulWidget {
 class _GrilleWidgetState extends State<GrilleWidget> {
   @override
   Widget build(BuildContext context) {
+    String word = widget.word;
     return Container(
       height: 500,
       width: MediaQuery.of(context).size.width,
@@ -22,7 +25,7 @@ class _GrilleWidgetState extends State<GrilleWidget> {
       ),
       child: Column(
         children: [
-          for(int i=0; i<5; i++) LigneWidget(word: 'bonjour')
+          for(int i=0; i<5; i++) LigneWidget(word: word)
         ],
       ),
     );

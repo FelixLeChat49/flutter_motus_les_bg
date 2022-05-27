@@ -13,19 +13,20 @@ class GameViewModel with ChangeNotifier {
 
   List<String> get list => _list;
 
-  late Word _randomWord;
+  late Word? _randomWord;
 
-  Word get randomWord => _randomWord;
+  Word? get randomWord => _randomWord;
 
   Future<String> getRandomWord() async {
     WordRepository wordRepository = await WordRepository.getInstance();
     if (wordRepository.checkBoxisEmpty()) {
       await loadDictionnary();
     }
-    _randomWord = wordRepository.getRandomWord()!;
+      _randomWord = wordRepository.getRandomWord()!;
+    print(_randomWord);
+
     // Ajouter dans la trash !
-    String textwithoutAccent = removeDiacritics(_randomWord.text);
-    return textwithoutAccent.toUpperCase();
+    return removeDiacritics(_randomWord!.text).toUpperCase();
   }
 
   Future<void> loadDictionnary() async {

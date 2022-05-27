@@ -17,7 +17,7 @@ class WordAdapter extends TypeAdapter<Word> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Word(
-      fields[0] as int?,
+      fields[0] as String?,
       fields[1] as String,
       fields[2] as DateTime?,
     );

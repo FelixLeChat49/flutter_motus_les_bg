@@ -15,10 +15,10 @@ class WordFirestore {
   static WordFirestore getInstance() {
     if (_instance == null) {
       _wordRef = _firebaseFirestore
-          .collection('words)')
+          .collection('words')
           .withConverter<Word>(
             fromFirestore: (snapshot, _) => Word.fromJson(snapshot.data()!),
-            toFirestore: (word, _) => Word.toJson(word)
+            toFirestore: (word, _) => word.toJson()
           );
     }
     _instance = WordFirestore._();
@@ -50,7 +50,7 @@ class WordFirestore {
     */
 
     Future<QuerySnapshot<Word>> getAll() async {
-      return _wordRef.get();
+      return await _wordRef.get();
     }
 
   }

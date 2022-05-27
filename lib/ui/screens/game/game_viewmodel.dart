@@ -22,8 +22,7 @@ class GameViewModel with ChangeNotifier {
     if (wordRepository.checkBoxisEmpty()) {
       await loadDictionnary();
     }
-      _randomWord = wordRepository.getRandomWord()!;
-    print(_randomWord);
+      _randomWord = await wordRepository.getRandomWord();
 
     // Ajouter dans la trash !
     return removeDiacritics(_randomWord!.text).toUpperCase();

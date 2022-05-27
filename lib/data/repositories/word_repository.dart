@@ -1,16 +1,21 @@
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../dataSources/firestore/word_firestore.dart';
 import '../dataSources/local/word_hive.dart';
 import '../entities/word.dart';
 
 class WordRepository {
   static WordRepository? _instance;
   static WordHive? _wordHive;
+  static WordFirestore? _wordFirestore;
 
   static Future<WordRepository> getInstance() async {
     if (_instance == null) {
       _wordHive = await WordHive.getInstance();
       _instance = WordRepository._();
+      _wordFirestore = WordFirestore.getInstance();
     }
 
     return _instance!;
@@ -36,5 +41,16 @@ class WordRepository {
 
   bool checkBoxisEmpty(){
     return _wordHive!.isEmpty();
+  }
+
+  Future<List<Word>> getAllFromFirestore() async{
+
+    QuerySnapshot<Word> words = await _wordFirestore!.getAll();
+
+    return words.docs.map((e) => e.data()).toList();
+  }
+  
+  Future<void> insertWordFirestore(word) async {
+    return await _wordFirestore!.insertWord(word);
   }
 }

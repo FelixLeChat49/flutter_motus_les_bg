@@ -6,7 +6,7 @@ part 'word.g.dart';
 class Word {
 
   @HiveField(0)
-  int? id;
+  String? id;
 
   @HiveField(1)
   String text;
@@ -18,13 +18,13 @@ class Word {
   Word(this.id, this.text, this.activeDate);
 
   Word.fromJson(Map<String,Object?> json)
-    : this(json['id']! as int, json['text']! as String, json['activeDate']! as DateTime);
+    : this("",json['text']! as String, null);
 
-  Map<String, dynamic> toJson(Word word) {
+  Map<String, dynamic> toJson() {
     return {
-      'id': word.id,
-      'text': word.text,
-      'activeDate': word.activeDate
+      'id': id,
+      'text': text,
+      'activeDate': activeDate
     };
   }
 }

@@ -19,10 +19,18 @@ class GameViewModel with ChangeNotifier {
 
   Future<String> getRandomWord() async {
     WordRepository wordRepository = await WordRepository.getInstance();
-    if (wordRepository.checkBoxisEmpty()) {
+    List<Word> passWords = await wordRepository.getAllFromFirestore();
+    if (passWords.length == 1) {
       await loadDictionnary();
     }
-      _randomWord = await wordRepository.getRandomWord();
+    _randomWord = await wordRepository.getRandomWord();
+
+    Map<String,Object?> json = {
+      'text': _randomWord?.text,
+      'activeDate' : DateTime.now()
+    };
+
+    wordRepository.updateWord(_randomWord!.id,json);
 
     // Ajouter dans la trash !
     return removeDiacritics(_randomWord!.text).toUpperCase();
@@ -31,7 +39,7 @@ class GameViewModel with ChangeNotifier {
   Future<void> loadDictionnary() async {
     WordRepository wordRepository = await WordRepository.getInstance();
     String dico = await rootBundle.loadString('assets/files/dico.txt');
-    _list = dico.split("\r\n").where((word) => word.length > 5).toList();
+    _list = dico.split("\r\n").where((word) => word.length > 5).take(200).toList();
     wordRepository.populateDatabase(_list);
     notifyListeners();
   }

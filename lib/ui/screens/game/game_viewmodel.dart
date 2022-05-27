@@ -35,4 +35,9 @@ class GameViewModel with ChangeNotifier {
     wordRepository.populateDatabase(_list);
     notifyListeners();
   }
+
+  Future<void> createWord(Word word) async {
+    WordRepository wordRepository = await WordRepository.getInstance();
+    wordRepository.insertWord(word);
+  }
 }

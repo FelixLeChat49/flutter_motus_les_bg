@@ -31,7 +31,13 @@ class WordRepository {
   }
 
   Future<void> populateDatabase(List<String> strings) async {
-    await _wordHive?.populateWithWord(strings);
+     List<Word> words = strings.map((e) {
+      return Word.fromJson({
+        'text' : e
+      });
+    }).toList();
+
+     _wordFirestore!.addAll(words);
   }
 
   Future<Word?> getRandomWord() async {
@@ -47,13 +53,20 @@ class WordRepository {
 
     QuerySnapshot<Word> words = await _wordFirestore!.getAll();
 
-    return words.docs.map((e) {
+    List<Word> list = words.docs.map((e) {
       String id = e.reference.id;
       return Word(id, e.data().text, e.data().activeDate);
     } ).toList();
+
+    return list;
   }
   
   Future<void> insertWordFirestore(word) async {
     return await _wordFirestore!.insertWord(word);
+  }
+
+  Future<void> updateWord(String? id, Map<String, Object?> json) async {
+    Word word = Word(id, json['text'].toString() , json['activeDate'] as DateTime?);
+    await _wordFirestore?.insertWordWithId(id!, word);
   }
 }

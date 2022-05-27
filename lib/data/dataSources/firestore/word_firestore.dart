@@ -15,7 +15,7 @@ class WordFirestore {
   static WordFirestore getInstance() {
     if (_instance == null) {
       _wordRef = _firebaseFirestore
-          .collection('words')
+          .collection('wordsVF')
           .withConverter<Word>(
             fromFirestore: (snapshot, _) => Word.fromJson(snapshot.data()!),
             toFirestore: (word, _) => word.toJson()
@@ -27,19 +27,19 @@ class WordFirestore {
 
 
     Future insertWord(Word word) async {
-      _wordRef.add(word);
+      await _wordRef.add(word);
     }
 
-    Future<void> insertWordWithId(int id,String word) {
+    Future<void> insertWordWithId(String id,Word word) {
       return _wordRef.doc(id).set(word);
     }
 
     Future<QuerySnapshot<Word>> searchWord(String text) async {
-      return _wordRef.where('text', isEqualTo: 1).get();
+      return await _wordRef.where('text', isEqualTo: 1).get();
     }
 
     Future<void> deleteWord(String id) async {
-      return _wordRef.doc(id).delete();
+      return await _wordRef.doc(id).delete();
     }
 
     /*
@@ -50,7 +50,14 @@ class WordFirestore {
     */
 
     Future<QuerySnapshot<Word>> getAll() async {
-      return await _wordRef.get();
+      return await _wordRef.where('activeDate',isEqualTo: null).get();
+    }
+
+    Future addAll(List<Word> words) async {
+      words.forEach((element) {
+        _wordRef.add(element);
+      });
+      return;
     }
 
   }

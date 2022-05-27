@@ -34,9 +34,9 @@ class WordRepository {
     await _wordHive?.populateWithWord(strings);
   }
 
-  Word? getRandomWord() {
-    List<Word>? words = _wordHive?.getAllWords();
-    return words?[Random().nextInt(words.length)];
+  Future<Word?> getRandomWord() async {
+    List<Word>? words = await getAllFromFirestore();
+    return words[Random().nextInt(words.length)];
   }
 
   bool checkBoxisEmpty(){
@@ -47,7 +47,10 @@ class WordRepository {
 
     QuerySnapshot<Word> words = await _wordFirestore!.getAll();
 
-    return words.docs.map((e) => e.data()).toList();
+    return words.docs.map((e) {
+      String id = e.reference.id;
+      return Word(id, e.data().text, e.data().activeDate);
+    } ).toList();
   }
   
   Future<void> insertWordFirestore(word) async {

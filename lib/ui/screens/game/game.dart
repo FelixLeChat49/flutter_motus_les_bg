@@ -9,8 +9,15 @@ class GamePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     GameViewModel viewModel = context.read<GameViewModel>();
-    // Créer des TextField avec un maxLength à 1
-    //
-    return GrilleWidget();
+    return FutureBuilder(
+      builder: (context, snapshot){
+        if(snapshot.connectionState == ConnectionState.done && snapshot.hasData){
+        return GrilleWidget(word: snapshot.data.toString(),);
+        }else{
+          return const Center(child: CircularProgressIndicator());
+        }
+      },
+      future: viewModel.getRandomWord()
+    );
   }
 }

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 class InputCase extends StatelessWidget {
   const InputCase(
-      {Key? key, this.etatLettre = EtatLettre.VIDE, this.lettre = "", required this.size})
+      {Key? key,
+      this.etatLettre = EtatLettre.VIDE,
+      this.lettre = "",
+      required this.size})
       : super(key: key);
 
   final EtatLettre etatLettre;
@@ -16,18 +19,16 @@ class InputCase extends StatelessWidget {
     return SizedBox(
       // A mettre dans la column
       width: size,
-      child: TextField(
+      child: TextFormField(
         maxLength: 1,
-        onChanged: (text){
-          if(text.length == 1){
+        onChanged: (text) {
+          if (text.length == 1) {
             FocusScope.of(context).nextFocus();
           }
         },
+        initialValue: lettre,
         textAlign: TextAlign.center,
-        style: const TextStyle(
-          color: Colors.blue,
-          fontSize: 25
-        ),
+        style: const TextStyle(color: Colors.black, fontSize: 25),
         decoration: const InputDecoration(
           counterText: "",
           border: OutlineInputBorder(borderSide: BorderSide(width: 2)),

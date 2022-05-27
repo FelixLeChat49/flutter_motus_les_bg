@@ -17,7 +17,7 @@ Future<void> main() async {
   await Hive.initFlutter();
   Hive..registerAdapter(WordAdapter())
   ..registerAdapter(GameAdapter())
-  ..registerAdapter(UserAdapter())
+  ..registerAdapter(PlayerAdapter())
   ..registerAdapter(TrashAdapter());
   runApp(MultiProvider(providers: [
 

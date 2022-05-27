@@ -6,7 +6,7 @@ part of 'player.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserAdapter extends TypeAdapter<Player> {
+class PlayerAdapter extends TypeAdapter<Player> {
   @override
   final int typeId = 3;
 
@@ -17,10 +17,11 @@ class UserAdapter extends TypeAdapter<Player> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Player(
-      pseudo: fields[0] as String?,
-      email: fields[1] as String?,
-      password: fields[2] as String?,
-    )..score = fields[3] as double?;
+      fields[0] as String,
+      fields[1] as String,
+      fields[2] as String,
+      fields[3] as double?,
+    );
   }
 
   @override
@@ -43,7 +44,7 @@ class UserAdapter extends TypeAdapter<Player> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is UserAdapter &&
+      other is PlayerAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

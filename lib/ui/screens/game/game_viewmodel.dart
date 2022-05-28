@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_motus/data/entities/word.dart';
 import 'package:flutter_motus/data/repositories/word_repository.dart';
+import 'package:intl/intl.dart';
 
 class GameViewModel with ChangeNotifier {
   late Word _word;
@@ -19,18 +20,24 @@ class GameViewModel with ChangeNotifier {
 
   Future<String> getRandomWord() async {
     WordRepository wordRepository = await WordRepository.getInstance();
+    List<Word>? wordsOfDay = await wordRepository.getWordOfDay();
     List<Word> passWords = await wordRepository.getAllFromFirestore();
     if (passWords.length == 1) {
       await loadDictionnary();
     }
-    _randomWord = await wordRepository.getRandomWord();
+    if(wordsOfDay!.isEmpty){
+      _randomWord = await wordRepository.getRandomWord();
 
-    Map<String,Object?> json = {
-      'text': _randomWord?.text,
-      'activeDate' : DateTime.now()
-    };
+      Map<String,Object?> json = {
+        'text': _randomWord?.text,
+        'activeDate' : DateFormat.yMMMEd().format(DateTime.now())
+      };
 
-    wordRepository.updateWord(_randomWord!.id,json);
+      wordRepository.updateWord(_randomWord!.id,json);
+    }else{
+      _randomWord = wordsOfDay.first;
+    }
+
 
     // Ajouter dans la trash !
     return removeDiacritics(_randomWord!.text).toUpperCase();

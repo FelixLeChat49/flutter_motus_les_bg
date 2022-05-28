@@ -19,7 +19,7 @@ class WordAdapter extends TypeAdapter<Word> {
     return Word(
       fields[0] as String?,
       fields[1] as String,
-      fields[2] as DateTime?,
+      fields[2] as String?,
     );
   }
 

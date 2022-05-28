@@ -66,7 +66,17 @@ class WordRepository {
   }
 
   Future<void> updateWord(String? id, Map<String, Object?> json) async {
-    Word word = Word(id, json['text'].toString() , json['activeDate'] as DateTime?);
+    Word word = Word(id, json['text'].toString() , json['activeDate'] as String?);
     await _wordFirestore?.insertWordWithId(id!, word);
+  }
+
+  Future<List<Word>?> getWordOfDay() async {
+    QuerySnapshot<Word>? wordOfDay= await _wordFirestore!.getWordOfTheDay();
+    List<Word>? word = wordOfDay?.docs.map((e) {
+      String id = e.reference.id;
+      String? activeDate = e.data().activeDate.toString();
+      return Word(id, e.data().text, e.data().activeDate);
+    }).toList();
+    return word;
   }
 }

@@ -12,6 +12,19 @@ class GrilleWidget extends StatefulWidget {
 }
 
 class _GrilleWidgetState extends State<GrilleWidget> {
+  int enableRow = 0;
+
+  bool buttonEnabled = true;
+  
+  void changeRow(){
+    setState((){
+      enableRow++;
+      if(enableRow >=5){
+        buttonEnabled = false;
+      }
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     String word = widget.word;
@@ -25,7 +38,12 @@ class _GrilleWidgetState extends State<GrilleWidget> {
       ),
       child: Column(
         children: [
-          for(int i=0; i<5; i++) LigneWidget(word: word)
+          for(int i=0; i<5; i++) if(i==enableRow)LigneWidget(word: word,enable:true) else LigneWidget(word: word),
+          ElevatedButton(
+              onPressed: (buttonEnabled) ? changeRow : null,
+
+              child: const Text("Valider la réponse")
+          )
         ],
       ),
     );

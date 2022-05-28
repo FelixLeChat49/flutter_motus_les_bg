@@ -5,7 +5,8 @@ class InputCase extends StatelessWidget {
       {Key? key,
       this.etatLettre = EtatLettre.VIDE,
       this.lettre = "",
-      required this.size})
+      required this.size,
+      required this.enable})
       : super(key: key);
 
   final EtatLettre etatLettre;
@@ -14,12 +15,15 @@ class InputCase extends StatelessWidget {
 
   final double size;
 
+  final bool enable;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       // A mettre dans la column
       width: size,
       child: TextFormField(
+        enabled: enable,
         maxLength: 1,
         onChanged: (text) {
           if (text.length == 1) {
@@ -29,10 +33,16 @@ class InputCase extends StatelessWidget {
         initialValue: lettre,
         textAlign: TextAlign.center,
         style: const TextStyle(color: Colors.black, fontSize: 25),
-        decoration: const InputDecoration(
+        decoration: (!enable) ?
+        const InputDecoration(
+          counterText: "",
+          fillColor: Colors.grey,
+          filled: true,
+        ) :
+        const InputDecoration(
           counterText: "",
           border: OutlineInputBorder(borderSide: BorderSide(width: 2)),
-        ),
+        )
       ),
     );
   }

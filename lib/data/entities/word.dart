@@ -12,13 +12,13 @@ class Word {
   String text;
 
   @HiveField(2)
-  DateTime? activeDate;
+  String? activeDate;
 
 
   Word(this.id, this.text, this.activeDate);
 
   Word.fromJson(Map<String,Object?> json)
-    : this("",json['text']! as String, null);
+    : this("",json['text']! as String, "");
 
   Map<String, dynamic> toJson() {
     return {
